@@ -1,5 +1,5 @@
 // Reemplaza esta URL con la de tu servicio API en Railway
-const API = "https://api-ia.up.railway.app";
+const API = "https://nginx-app-db-production-a8df.up.railway.app";
 
 async function fetchAll() {
   const r = await fetch(`${API}/records`);
