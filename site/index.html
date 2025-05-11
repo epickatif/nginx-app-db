@@ -12,36 +12,69 @@
 <body>
   <div class="container">
     <header class="site-header">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo" class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+           alt="Logo circular azul con una hélice estilizada" class="logo">
       <h1 class="site-title">Explorando la inteligencia artificial</h1>
     </header>
+
     <main class="content">
       <section class="hero">
         <h2 class="hero-heading">Descubre cómo la IA está transformando nuestro mundo</h2>
         <p>Aprende los principios de aprendizaje automático, redes neuronales y ética de la IA a través de ejemplos simples y claras explicaciones.</p>
-        <a class="cta-button" href="https://www.youtube.com/watch?v=5qap5aO4i9A" target="_blank" rel="noopener">▶ Ver introducción en YouTube</a>
+        <a class="cta-button"
+           href="https://www.youtube.com/watch?v=5qap5aO4i9A"
+           target="_blank" rel="noopener">
+          ▶ Ver introducción en YouTube
+        </a>
       </section>
+
       <section class="card-grid" aria-label="Artículos destacados">
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=600&q=80" alt="Cerebro IA" class="card-img">
+          <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=600&q=80"
+               alt="Cerebro hecho de líneas y datos" class="card-img">
           <h3 class="card-title">Aprendizaje supervisado</h3>
-          <p class="card-text">Descubre cómo los algoritmos clasifican correos spam o reconocen dígitos escritos a mano usando datos etiquetados.</p>
+          <p class="card-text">
+            Descubre cómo los algoritmos clasifican correos spam
+            o reconocen dígitos escritos a mano usando datos etiquetados.
+          </p>
         </article>
+
         <article class="card">
-          <img src="https://images.pexels.com/photos/9028874/pexels-photo-9028874.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=600&q=80" alt="Robótica cognitiva" class="card-img">
+          <img src="https://images.pexels.com/photos/9028874/pexels-photo-9028874.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=600&q=80"
+               alt="Ingenieros colaborando con un brazo robótico en laboratorio" class="card-img">
           <h3 class="card-title">Robótica cognitiva</h3>
-          <p class="card-text">Conoce cómo los sensores y la IA permiten que los robots perciban el entorno y aprendan tareas complejas.</p>
+          <p class="card-text">
+            Conoce cómo los sensores y la IA permiten que los robots
+            perciban el entorno y aprendan tareas complejas.
+          </p>
         </article>
+
         <article class="card">
-          <img src="https://i.ytimg.com/vi/6yDr7CWLJ8c/hq720.jpg" alt="Ética y privacidad" class="card-img">
+          <img src="https://i.ytimg.com/vi/6yDr7CWLJ8c/hq720.jpg"
+               alt="Representación visual de la ética en la inteligencia artificial" class="card-img">
           <h3 class="card-title">Ética y privacidad</h3>
-          <p class="card-text">Explora los dilemas sobre sesgos algorítmicos, protección de datos y transparencia en sistemas inteligentes.</p>
+          <p class="card-text">
+            Explora los dilemas sobre sesgos algorítmicos,
+            protección de datos y transparencia en sistemas inteligentes.
+          </p>
         </article>
       </section>
+
+      <section>
+        <h2>Gestor de notas</h2>
+        <button onclick="add()">➕ Nuevo</button>
+        <ul id="records" class="record-list"></ul>
+      </section>
     </main>
+
     <footer class="site-footer">
-      <p>Licenciatura en Desarrollo de Sistemas Web (LDSW)<br>Héctor Armando Salazar Andrade — Código 221968676<br>armando.salazar.andrade@gmail.com</p>
+      <p>
+        Licenciatura en Desarrollo de Sistemas Web (LDSW)<br>
+        Héctor Armando Salazar Andrade — Código 221968676<br>
+        armando.salazar.andrade@gmail.com
+      </p>
     </footer>
   </div>
+  <script src="js/crud.js"></script>
 </body>
 </html>

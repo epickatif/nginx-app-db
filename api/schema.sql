@@ -1,1 +1,0 @@
-CREATE TABLE IF NOT EXISTS items (id SERIAL PRIMARY KEY, title TEXT NOT NULL, description TEXT);
