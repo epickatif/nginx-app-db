@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,61 +10,66 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
   <div class="container">
     <header class="site-header">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-           alt="Logo circular azul con una hélice estilizada" class="logo">
+        alt="Logo circular azul con una hélice estilizada" class="logo">
       <h1 class="site-title">Explorando la inteligencia artificial</h1>
     </header>
 
     <main class="content">
       <section class="hero">
         <h2 class="hero-heading">Descubre cómo la IA está transformando nuestro mundo</h2>
-        <p>Aprende los principios de aprendizaje automático, redes neuronales y ética de la IA a través de ejemplos simples y claras explicaciones.</p>
-        <a class="cta-button"
-           href="https://www.youtube.com/watch?v=5qap5aO4i9A"
-           target="_blank" rel="noopener">
-          ▶ Ver introducción en YouTube
-        </a>
+        <p>Aprende los principios de aprendizaje automático, redes neuronales y ética de la IA a través de ejemplos
+          simples y claras explicaciones.</p>
+        <a class="cta-button" href="https://www.youtube.com/watch?v=5qap5aO4i9A" target="_blank" rel="noopener">▶ Ver
+          introducción en YouTube</a>
       </section>
 
       <section class="card-grid" aria-label="Artículos destacados">
         <article class="card">
           <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=600&q=80"
-               alt="Cerebro hecho de líneas y datos" class="card-img">
+            alt="Cerebro hecho de líneas y datos" class="card-img">
           <h3 class="card-title">Aprendizaje supervisado</h3>
-          <p class="card-text">
-            Descubre cómo los algoritmos clasifican correos spam
-            o reconocen dígitos escritos a mano usando datos etiquetados.
-          </p>
+          <p class="card-text">Descubre cómo los algoritmos clasifican correos spam o reconocen dígitos escritos a mano
+            usando datos etiquetados.</p>
         </article>
 
         <article class="card">
-          <img src="https://images.pexels.com/photos/9028874/pexels-photo-9028874.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=600&q=80"
-               alt="Ingenieros colaborando con un brazo robótico en laboratorio" class="card-img">
+          <img
+            src="https://images.pexels.com/photos/9028874/pexels-photo-9028874.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=600&q=80"
+            alt="Ingenieros colaborando con un brazo robótico en laboratorio" class="card-img">
           <h3 class="card-title">Robótica cognitiva</h3>
-          <p class="card-text">
-            Conoce cómo los sensores y la IA permiten que los robots
-            perciban el entorno y aprendan tareas complejas.
-          </p>
+          <p class="card-text">Conoce cómo los sensores y la IA permiten que los robots perciban el entorno y aprendan
+            tareas complejas.</p>
         </article>
 
         <article class="card">
           <img src="https://i.ytimg.com/vi/6yDr7CWLJ8c/hq720.jpg"
-               alt="Representación visual de la ética en la inteligencia artificial" class="card-img">
+            alt="Representación visual de la ética en la inteligencia artificial" class="card-img">
           <h3 class="card-title">Ética y privacidad</h3>
-          <p class="card-text">
-            Explora los dilemas sobre sesgos algorítmicos,
-            protección de datos y transparencia en sistemas inteligentes.
-          </p>
+          <p class="card-text">Explora los dilemas sobre sesgos algorítmicos, protección de datos y transparencia en
+            sistemas inteligentes.</p>
         </article>
       </section>
 
-      <section>
-        <h2>Gestor de notas</h2>
-        <button onclick="add()">➕ Nuevo</button>
-        <ul id="records" class="record-list"></ul>
+      <!-- Gestor de notas -->
+      <section class="notes">
+        <h2 class="notes-heading">Bloc de notas interactivo</h2>
+        <p class="notes-desc">
+          Guarda ideas rápidas, edítalas cuando lo necesites o elimínalas si ya no son útiles.
+          Todos los cambios se almacenan en la base de datos en tiempo real.
+        </p>
+
+        <form class="note-form" onsubmit="createNote(event)">
+          <input type="text" id="titleInput" placeholder="Título" required />
+          <textarea id="bodyInput" placeholder="Contenido de la nota" rows="2" required></textarea>
+          <button type="submit" class="btn primary">Guardar</button>
+        </form>
+
+        <ul id="records" class="note-list"></ul>
       </section>
     </main>
 
@@ -77,4 +83,5 @@
   </div>
   <script src="js/crud.js"></script>
 </body>
+
 </html>

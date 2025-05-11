@@ -1,37 +1,52 @@
-// Reemplaza esta URL con la de tu servicio API en Railway
 const API = "https://nginx-app-db-production-a8df.up.railway.app";
 
-async function fetchAll() {
-  const r = await fetch(`${API}/records`);
-  const data = await r.json();
-  const list = document.getElementById("records");
-  list.innerHTML = data.map(n => `
-    <li>
-      <span><strong>${n.title}</strong></span>
-      <span>
-        <button onclick="edit(${n.id})">✏️</button>
-        <button onclick="del(${n.id})">🗑️</button>
-      </span>
-    </li>`).join("");
+/* ------------- Rendering ------------- */
+function renderNotes(data = []) {
+  const ul = document.getElementById("records");
+  ul.innerHTML = data.map(n => `
+    <li class="note-card">
+      <span class="note-title">${n.title}</span>
+      <span class="note-body">${n.body}</span>
+      <div class="note-actions">
+        <button onclick="edit(${n.id})">✏️ Editar</button>
+        <button onclick="del(${n.id})">🗑️ Borrar</button>
+      </div>
+    </li>
+  `).join("");
 }
 
-async function add() {
-  const title = prompt("Título");
-  if (!title) return;
-  const body = prompt("Contenido");
-  await fetch(`${API}/records`, {
+/* ------------- CRUD ------------- */
+async function fetchAll() {
+  const res  = await fetch(API + "/records");
+  const data = await res.json();
+  renderNotes(data);
+}
+
+async function createNote(e) {
+  e.preventDefault();
+  const title = document.getElementById("titleInput").value.trim();
+  const body  = document.getElementById("bodyInput").value.trim();
+  if (!title || !body) return;
+
+  await fetch(API + "/records", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ title, body })
   });
+
+  e.target.reset();
   fetchAll();
 }
 
 window.edit = async id => {
-  const r = await fetch(`${API}/records/${id}`);
-  const val = await r.json();
-  const title = prompt("Título:", val.title);
-  const body = prompt("Contenido:", val.body);
+  const res  = await fetch(`${API}/records/${id}`);
+  const note = await res.json();
+
+  const title = prompt("Nuevo título", note.title);
+  if (title === null) return;
+  const body  = prompt("Nuevo contenido", note.body);
+  if (body === null) return;
+
   await fetch(`${API}/records/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -41,9 +56,10 @@ window.edit = async id => {
 };
 
 window.del = async id => {
-  if (!confirm("¿Seguro de borrar?")) return;
+  if (!confirm("¿Eliminar nota?")) return;
   await fetch(`${API}/records/${id}`, { method: "DELETE" });
   fetchAll();
 };
 
+/* Init */
 document.addEventListener("DOMContentLoaded", fetchAll);
