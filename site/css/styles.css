@@ -244,6 +244,13 @@ button:hover {
 
 .note-actions button {
      border: none;
+     background: var(--primary);
+     color: #fff;
+     padding: .25rem .6rem;
+     border-radius: .25rem;
+     cursor: pointer;
+     transition: background .2s;
+     border: none;
      background: #e2e8f0;
      padding: .25rem .6rem;
      border-radius: .25rem;
@@ -252,5 +259,15 @@ button:hover {
 }
 
 .note-actions button:hover {
-     background: #cbd5e1;
+     background: var(--primary-light);
+}
+
+/* Override button colors for dark theme */
+.note-actions button {
+     background: var(--primary);
+     color: #fff;
+}
+
+.note-actions button:hover {
+     background: var(--primary-light);
 }
