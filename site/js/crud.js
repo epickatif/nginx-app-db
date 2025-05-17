@@ -277,9 +277,64 @@ function initThemeToggle() {
   });
 }
 
+/* Navegación */
+function initNavigation() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  // Función para actualizar la navegación activa
+  function updateActiveNav() {
+    let currentSection = '';
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSection}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  // Actualizar navegación al hacer scroll
+  window.addEventListener('scroll', updateActiveNav);
+
+  // Navegación suave al hacer clic en los enlaces
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+
+      window.scrollTo({
+        top: targetSection.offsetTop - 50,
+        behavior: 'smooth'
+      });
+
+      // Actualizar URL sin recargar la página
+      history.pushState(null, null, targetId);
+
+      // Actualizar navegación activa
+      navLinks.forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Inicializar navegación activa
+  updateActiveNav();
+}
+
 /* Init */
 document.addEventListener("DOMContentLoaded", async () => {
   initThemeToggle();
+  initNavigation();
   await fetchCategories();
   await fetchAll();
 });

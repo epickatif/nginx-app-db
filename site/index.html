@@ -21,8 +21,18 @@
       <h1 class="site-title">Explorando la inteligencia artificial</h1>
     </header>
 
+    <!-- Navegación principal -->
+    <nav class="main-nav">
+      <ul class="nav-links">
+        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+        <li><a href="#articulos" class="nav-link">Artículos</a></li>
+        <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
+        <li><a href="#notas" class="nav-link">Mis Notas</a></li>
+      </ul>
+    </nav>
+
     <main class="content">
-      <section class="hero">
+      <section id="inicio" class="hero">
         <h2 class="hero-heading">Descubre cómo la IA está transformando nuestro mundo</h2>
         <p>Aprende los principios de aprendizaje automático, redes neuronales y ética de la IA a través de ejemplos
           simples y claras explicaciones.</p>
@@ -45,7 +55,7 @@
         </div>
       </section>
 
-      <section class="card-grid" aria-label="Artículos destacados">
+      <section id="articulos" class="card-grid" aria-label="Artículos destacados">
         <article class="card">
           <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=600&q=80"
             alt="Cerebro hecho de líneas y datos" class="card-img">
@@ -76,7 +86,7 @@
       </section>
 
       <!-- Sección de mapa y ubicación -->
-      <section class="map-section">
+      <section id="ubicacion" class="map-section">
         <h2 class="section-title">Centros de investigación en IA</h2>
         <p class="section-desc">Visita el Centro Universitario de Ciencias Exactas e Ingenierías (CUCEI) de la Universidad de Guadalajara, donde se realizan investigaciones en inteligencia artificial y ciencias de la computación.</p>
 
@@ -84,7 +94,7 @@
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.2124112068513!2d-103.32636932526153!3d20.70742478616542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b1c9536e2423%3A0x6f811f532b2e2a58!2sCentro%20Universitario%20de%20Ciencias%20Exactas%20e%20Ingenier%C3%ADas!5e0!3m2!1ses-419!2smx!4v1715037600000!5m2!1ses-419!2smx"
             width="100%"
-            height="450"
+            height="350"
             style="border:0;"
             allowfullscreen=""
             loading="lazy"
@@ -111,7 +121,7 @@
       </section>
 
       <!-- Gestor de notas -->
-      <section class="notes">
+      <section id="notas" class="notes">
         <h2 class="notes-heading">Bloc de notas interactivo</h2>
         <p class="notes-desc">
           Guarda ideas rápidas, edítalas cuando lo necesites o elimínalas si ya no son útiles.
