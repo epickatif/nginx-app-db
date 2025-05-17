@@ -8,7 +8,31 @@
      --primary: #0d47a1;
      --primary-light: #1565c0;
      --text: #212121;
-     --bg-overlay: rgba(255, 255, 255, .94)
+     --text-light: #555;
+     --bg-overlay: rgba(255, 255, 255, .94);
+     --card-bg: #fafafa;
+     --border-color: #e2e8f0;
+     --success: #4caf50;
+     --warning: #ff9800;
+     --danger: #f44336;
+     --transition: all 0.3s ease;
+
+     /* Modo claro por defecto */
+     --bg-color: #ffffff;
+     --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Variables para modo oscuro */
+[data-theme="dark"] {
+     --primary: #1976d2;
+     --primary-light: #2196f3;
+     --text: #e0e0e0;
+     --text-light: #aaa;
+     --bg-overlay: rgba(33, 33, 33, .94);
+     --card-bg: #333;
+     --border-color: #444;
+     --bg-color: #121212;
+     --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -63,20 +87,69 @@ body {
      margin-bottom: .75rem
 }
 
-.cta-button {
-     display: inline-block;
-     margin-top: 1.25rem;
-     padding: .8rem 1.4rem;
-     border-radius: .3rem;
-     text-decoration: none;
-     font-weight: 600;
-     background: var(--primary);
-     color: #fff;
-     transition: background .2s
+/* Enlaces a servicios en la nube */
+.cloud-services {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 1rem;
+     margin-top: 1.5rem;
 }
 
-.cta-button:hover {
-     background: var(--primary-light)
+.cloud-service-link {
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+     padding: 0.75rem 1.25rem;
+     border-radius: 0.5rem;
+     text-decoration: none;
+     font-weight: 600;
+     color: #fff;
+     transition: var(--transition);
+     box-shadow: var(--card-shadow);
+}
+
+.cloud-service-link img {
+     width: 24px;
+     height: 24px;
+}
+
+.cloud-service-link.youtube {
+     background-color: #FF0000;
+}
+
+.cloud-service-link.youtube:hover {
+     background-color: #cc0000;
+     transform: translateY(-3px);
+}
+
+.cloud-service-link.github {
+     background-color: #24292e;
+}
+
+.cloud-service-link.github:hover {
+     background-color: #000000;
+     transform: translateY(-3px);
+}
+
+.cloud-service-link.drive {
+     background-color: #0F9D58;
+}
+
+.cloud-service-link.drive:hover {
+     background-color: #0b8043;
+     transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+     .cloud-services {
+          flex-direction: column;
+          align-items: stretch;
+     }
+
+     .cloud-service-link {
+          justify-content: center;
+     }
 }
 
 .card-grid {
@@ -86,15 +159,17 @@ body {
 }
 
 .card {
-     background: #fafafa;
-     border-radius: .4rem;
+     background: var(--card-bg);
+     border-radius: .5rem;
      overflow: hidden;
-     box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
-     transition: transform .2s
+     box-shadow: var(--card-shadow);
+     transition: var(--transition);
+     border: 1px solid var(--border-color);
 }
 
 .card:hover {
-     transform: translateY(-4px)
+     transform: translateY(-4px);
+     box-shadow: 0 8px 16px rgba(0, 0, 0, .1);
 }
 
 .card-img {
@@ -170,104 +245,296 @@ button:hover {
 /* ——— Notas ——— */
 .notes {
      margin-top: 3rem;
+     padding: 1.5rem;
+     background: var(--card-bg);
+     border-radius: .5rem;
+     box-shadow: var(--card-shadow);
+     border: 1px solid var(--border-color);
 }
 
 .notes-heading {
      font-size: 1.6rem;
      color: var(--primary);
+     margin-bottom: 0.5rem;
 }
 
 .notes-desc {
      margin: .5rem 0 1.25rem;
      max-width: 60ch;
+     color: var(--text-light);
 }
 
 .note-form {
      display: grid;
-     gap: .5rem;
+     gap: .75rem;
      grid-template-columns: 1fr;
-     margin-bottom: 1.25rem;
+     margin-bottom: 1.5rem;
+     background: var(--bg-color);
+     padding: 1.25rem;
+     border-radius: .5rem;
+     box-shadow: var(--card-shadow);
 }
 
 .note-form input,
-.note-form textarea {
-     padding: .6rem .8rem;
-     border: 1px solid #cbd5e1;
-     border-radius: .3rem;
+.note-form textarea,
+.note-form select {
+     padding: .75rem 1rem;
+     border: 1px solid var(--border-color);
+     border-radius: .4rem;
      font: inherit;
+     background-color: var(--bg-color);
+     color: var(--text);
+     transition: var(--transition);
+}
+
+.note-form input:focus,
+.note-form textarea:focus,
+.note-form select:focus {
+     outline: none;
+     border-color: var(--primary);
+     box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.note-form-row {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 1rem;
+}
+
+@media (max-width: 600px) {
+     .note-form-row {
+          grid-template-columns: 1fr;
+     }
+}
+
+.btn {
+     padding: .75rem 1.25rem;
+     border-radius: .4rem;
+     cursor: pointer;
+     font-weight: 600;
+     transition: var(--transition);
+     border: none;
 }
 
 .btn.primary {
      background: var(--primary);
      color: #fff;
-     border: none;
-     padding: .6rem 1.2rem;
-     border-radius: .3rem;
-     cursor: pointer;
-     transition: background .2s;
 }
 
 .btn.primary:hover {
      background: var(--primary-light);
+     transform: translateY(-2px);
+}
+
+.btn.secondary {
+     background: transparent;
+     color: var(--primary);
+     border: 1px solid var(--primary);
+}
+
+.btn.secondary:hover {
+     background: rgba(25, 118, 210, 0.1);
 }
 
 .note-list {
      list-style: none;
      padding: 0;
+     display: grid;
+     gap: 1rem;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .note-card {
-     background: #fff;
-     border: 1px solid #e2e8f0;
-     border-radius: .4rem;
-     padding: .75rem 1rem;
-     margin-bottom: .8rem;
+     background: var(--bg-color);
+     border: 1px solid var(--border-color);
+     border-radius: .5rem;
+     padding: 1rem;
      display: flex;
      flex-direction: column;
-     gap: .25rem;
+     gap: .5rem;
+     box-shadow: var(--card-shadow);
+     transition: var(--transition);
+     position: relative;
+}
+
+.note-card:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.note-card .note-category {
+     position: absolute;
+     top: 0.5rem;
+     right: 0.5rem;
+     font-size: 0.75rem;
+     padding: 0.25rem 0.5rem;
+     background: var(--primary);
+     color: white;
+     border-radius: 1rem;
+     opacity: 0.8;
 }
 
 .note-card .note-title {
      font-weight: 600;
      color: var(--primary);
+     font-size: 1.1rem;
+     margin-bottom: 0.25rem;
 }
 
 .note-card .note-body {
-     color: #334155;
+     color: var(--text);
+     flex-grow: 1;
+}
+
+.note-card .note-date {
+     font-size: 0.8rem;
+     color: var(--text-light);
+     margin-top: 0.5rem;
 }
 
 .note-actions {
-     margin-top: .5rem;
+     margin-top: 1rem;
      display: flex;
-     gap: .4rem;
+     gap: .5rem;
+     justify-content: flex-end;
 }
 
 .note-actions button {
      border: none;
      background: var(--primary);
      color: #fff;
-     padding: .25rem .6rem;
-     border-radius: .25rem;
+     padding: .4rem .75rem;
+     border-radius: .3rem;
      cursor: pointer;
-     transition: background .2s;
-     border: none;
-     background: #e2e8f0;
-     padding: .25rem .6rem;
-     border-radius: .25rem;
-     cursor: pointer;
-     transition: background .2s;
+     transition: var(--transition);
+     display: flex;
+     align-items: center;
+     gap: 0.25rem;
 }
 
 .note-actions button:hover {
      background: var(--primary-light);
+     transform: translateY(-2px);
 }
 
-/* Override button colors for dark theme */
-.note-actions button {
+.note-actions button.delete {
+     background: var(--danger);
+}
+
+.note-actions button.delete:hover {
+     background: #d32f2f;
+}
+
+/* Filtros de categoría */
+.category-filters {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.5rem;
+     margin-bottom: 1.5rem;
+}
+
+.category-filter {
+     padding: 0.4rem 0.8rem;
+     border-radius: 1rem;
+     background: var(--bg-color);
+     border: 1px solid var(--border-color);
+     cursor: pointer;
+     transition: var(--transition);
+     font-size: 0.9rem;
+}
+
+.category-filter:hover {
+     background: rgba(25, 118, 210, 0.1);
+}
+
+.category-filter.active {
      background: var(--primary);
-     color: #fff;
+     color: white;
+     border-color: var(--primary);
 }
 
-.note-actions button:hover {
+/* Toggle para modo oscuro */
+.theme-toggle {
+     position: fixed;
+     bottom: 1.5rem;
+     right: 1.5rem;
+     width: 3rem;
+     height: 3rem;
+     border-radius: 50%;
+     background: var(--primary);
+     color: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+     z-index: 100;
+     transition: var(--transition);
+     border: none;
+     font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+     transform: scale(1.1);
      background: var(--primary-light);
+}
+
+/* Sección de mapa */
+.map-section {
+     margin: 3rem 0;
+     padding: 1.5rem;
+     background: var(--card-bg);
+     border-radius: .5rem;
+     box-shadow: var(--card-shadow);
+     border: 1px solid var(--border-color);
+}
+
+.section-title {
+     font-size: 1.6rem;
+     color: var(--primary);
+     margin-bottom: 0.5rem;
+}
+
+.section-desc {
+     margin-bottom: 1.5rem;
+     color: var(--text-light);
+     max-width: 70ch;
+}
+
+.map-container {
+     border-radius: 0.5rem;
+     overflow: hidden;
+     box-shadow: var(--card-shadow);
+     margin-bottom: 1.5rem;
+}
+
+.location-info {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     gap: 1.25rem;
+}
+
+.location-card {
+     background: var(--bg-color);
+     padding: 1.25rem;
+     border-radius: 0.5rem;
+     box-shadow: var(--card-shadow);
+     border: 1px solid var(--border-color);
+}
+
+.location-card h3 {
+     color: var(--primary);
+     margin-bottom: 0.75rem;
+     font-size: 1.1rem;
+}
+
+.location-card p {
+     color: var(--text);
+     margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+     .location-info {
+          grid-template-columns: 1fr;
+     }
 }
